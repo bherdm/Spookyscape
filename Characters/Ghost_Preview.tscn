@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Characters/Ghost_Preview.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Ghosts/Ghost_White_29x60.png" type="Texture" id=2]
+
+[node name="ghost_preview" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+
+visibility/visible = false
+config/amount = 32
+config/lifetime = 1.0
+config/process_mode = 1
+config/half_extents = Vector2( 0, 4 )
+config/local_space = false
+params/direction = 270.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 4.0
+params/final_size = 0.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( -23.0645, -5.87532 )
+transform/rot = -84.2
+z/z = -1
+texture = ExtResource( 2 )
+flip_h = true
+modulate = Color( 0.580233, 0.0593262, 0.84375, 0.398902 )
+
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 0
+wait_time = 0.75
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+

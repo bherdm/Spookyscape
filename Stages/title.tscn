@@ -1,0 +1,1257 @@
+[gd_scene load_steps=36 format=1]
+
+[ext_resource path="res://Stages/title.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fog_960x540.png" type="Texture" id=2]
+[ext_resource path="res://Characters/display_witch.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Witch/Witch_FastBackwards_100x100.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Witch/Witch_Fast1_100x100.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Witch/Witch_Fast2_100x100.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Witch/Witch_Slow_100x100.png" type="Texture" id=7]
+[ext_resource path="res://Characters/Broomstick_Attack.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Google Fonts/Lakki_Reddy.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://Assets/Google Fonts/Lakki_Reddy_Bigger.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://Characters/Resources/SpookyTheme.tres" type="Theme" id=11]
+[ext_resource path="res://Characters/ready_grab_focus.gd" type="Script" id=12]
+[ext_resource path="res://fps_display.tscn" type="PackedScene" id=13]
+
+[sub_resource type="ImageTexture" id=1]
+
+flags = 7
+image = Image()
+size = Vector2( 960, 540 )
+storage = 0
+lossy_quality = 0.7
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 2.31263, -34.0002, 9.11381, -36.2446, 16.8671, -38.0809, 11.3582, -30.9397, -0.27182, -26.927, -5.37271, -29.4434 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 2.31263, -34.0002, -9.24938, -42.6377, 0.340286, -43.3859, 9.11381, -36.2446 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 46.2482, -19.3097, 48.6967, -18.2215, 20.8118, -4.41511, 31.1496, -13.2566 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 18.8395, -13.5967, 31.1496, -13.2566, 20.8118, -4.41511, -0.43129, 8.11834 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 1.18411, 26.6332, -12.6089, 25.0179, -5.52599, 16.9409, 12.4919, 20.9172 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -19.1947, 16.4438, -30.3782, 28.3729, -41.9345, 36.6984, -47.7748, 23.4025, -30.8753, 14.7042, -22.4255, 13.4616 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -19.1947, 16.4438, -22.4255, 13.4616, -9.87514, 7.37277, -0.43129, 8.11834 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -0.43129, 8.11834, -9.87514, 7.37277, -6.19229, 4.22587 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -1.66391, -18.8877, -0.27182, -26.927, 11.3582, -30.9397, 9.24983, -21.6901, -0.43129, 8.11834 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 24.1724, 2.02954, 12.4919, 20.9172, -5.52599, 16.9409, -0.43129, 8.11834, 20.8118, -4.41511 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 9.24983, -21.6901, 18.8395, -13.5967, -0.43129, 8.11834 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -4.96586, -4.45353, -1.66391, -18.8877, -0.43129, 8.11834, -6.19229, 4.22587 )
+
+[sub_resource type="SpriteFrames" id=14]
+
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "backwards",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "fast",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "slow",
+"speed": 5.0
+} ]
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -18.0678, 7.91346, -13.353, 15.9462, -43.0391, 41.7906, -52.2942, 20.661 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0, 0, 0, 0.448118 )
+light_color = Color( 1, 1, 1, 1 )
+dark_color = Color( 0, 0, 0, 1 )
+border_size = 0
+border_blend = true
+draw_bg = true
+
+[sub_resource type="Theme" id=17]
+
+Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = ExtResource( 9 )
+Panel/styles/panel = SubResource( 16 )
+Panel/styles/panelf = null
+Panel/styles/panelnc = null
+
+[sub_resource type="Animation" id=18]
+
+resource/name = "Fade_From_About"
+length = 4.0
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.65, 1.9 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/CenterContainer/HUD/title:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.35, 0.63 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Fly_Button:disabled")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.63 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Data_Button:disabled")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.63 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/About_Button:disabled")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0, 0.63 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Quit_Button:disabled")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 0, 0.63 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Fly_Button")
+tracks/6/interp = 1
+tracks/6/imported = false
+tracks/6/keys = {
+"times": FloatArray( 0.66 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Fly_Button:script/script")
+tracks/7/interp = 1
+tracks/7/imported = false
+tracks/7/keys = {
+"times": FloatArray( 0.66 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("CanvasLayer/About_Container/Back_Button:disabled")
+tracks/8/interp = 1
+tracks/8/imported = false
+tracks/8/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CanvasLayer/About_Container:visibility/opacity")
+tracks/9/interp = 1
+tracks/9/imported = false
+tracks/9/keys = {
+"times": FloatArray( 0, 0.2 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("display_witch:v_dir")
+tracks/10/interp = 1
+tracks/10/imported = false
+tracks/10/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("display_witch:h_dir")
+tracks/11/interp = 1
+tracks/11/imported = false
+tracks/11/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+
+resource/name = "Fade_to_About"
+length = 0.6
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/CenterContainer/HUD/title:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/About_Container:visibility/opacity")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.4, 0.6 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Fly_Button:disabled")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Data_Button:disabled")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/About_Button:disabled")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Quit_Button:disabled")
+tracks/6/interp = 1
+tracks/6/imported = false
+tracks/6/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CanvasLayer/About_Container/Back_Button:disabled")
+tracks/7/interp = 1
+tracks/7/imported = false
+tracks/7/keys = {
+"times": FloatArray( 0, 0.35 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("CanvasLayer/About_Container/Back_Button")
+tracks/8/interp = 1
+tracks/8/imported = false
+tracks/8/keys = {
+"times": FloatArray( 0.4 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab"
+} ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("display_witch:h_dir")
+tracks/9/interp = 1
+tracks/9/imported = false
+tracks/9/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("display_witch:v_dir")
+tracks/10/interp = 1
+tracks/10/imported = false
+tracks/10/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ -1.0 ]
+}
+
+[sub_resource type="Animation" id=20]
+
+resource/name = "fade_out_and_to_black"
+length = 0.9
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer 2/Panel:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.9 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0.45 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/CenterContainer/HUD/title:visibility/opacity")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0.45 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("display_witch/Camera2D:smoothing/enable")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("display_witch/Camera2D:smoothing/speed")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0, 0.45 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 5.0, 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Fly_Button:disabled")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Data_Button:disabled")
+tracks/6/interp = 1
+tracks/6/imported = false
+tracks/6/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/About_Button:disabled")
+tracks/7/interp = 1
+tracks/7/imported = false
+tracks/7/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Quit_Button:disabled")
+tracks/8/interp = 1
+tracks/8/imported = false
+tracks/8/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=21]
+
+resource/name = "move_witch"
+length = 4.0
+loop = false
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath("display_witch:h_dir")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5, 0.6 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer 2/Panel:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer:visibility/opacity")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 1.4, 1.9 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/CenterContainer/HUD/title:visibility/opacity")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 1.1, 1.38 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("display_witch/Camera2D:smoothing/enable")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Fly_Button:disabled")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 0, 1.38 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Data_Button:disabled")
+tracks/6/interp = 1
+tracks/6/imported = false
+tracks/6/keys = {
+"times": FloatArray( 0, 1.38 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/About_Button:disabled")
+tracks/7/interp = 1
+tracks/7/imported = false
+tracks/7/keys = {
+"times": FloatArray( 0, 1.38 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Quit_Button:disabled")
+tracks/8/interp = 1
+tracks/8/imported = false
+tracks/8/keys = {
+"times": FloatArray( 0, 1.38 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Fly_Button")
+tracks/9/interp = 1
+tracks/9/imported = false
+tracks/9/keys = {
+"times": FloatArray( 1.41 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab"
+} ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("CanvasLayer/CenterContainer/HUD/HBoxContainer/Fly_Button:script/script")
+tracks/10/interp = 1
+tracks/10/imported = false
+tracks/10/keys = {
+"times": FloatArray( 1.41 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=22]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0, 0, 0, 1 )
+light_color = Color( 0.8, 0.8, 0.8, 1 )
+dark_color = Color( 0.8, 0.8, 0.8, 1 )
+border_size = 0
+border_blend = true
+draw_bg = true
+
+[node name="TitleManager" type="Node2D"]
+
+script/script = ExtResource( 1 )
+path_to_game_scene = "level"
+scroll_speed = 3
+
+[node name="ParallaxBlackBackground" type="ParallaxBackground" parent="."]
+
+editor/display_folded = true
+layer = -10
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = false
+
+[node name="Background_Far" type="ParallaxLayer" parent="ParallaxBlackBackground"]
+
+motion/scale = Vector2( 0.25, 0.25 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 960, 540 )
+
+[node name="Black" type="Sprite" parent="ParallaxBlackBackground/Background_Far"]
+
+texture = SubResource( 1 )
+centered = false
+modulate = Color( 0, 0, 0, 1 )
+
+[node name="ParallaxFogBackground1" type="ParallaxBackground" parent="."]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = false
+
+[node name="Background_Far" type="ParallaxLayer" parent="ParallaxFogBackground1"]
+
+motion/scale = Vector2( 0.25, 0.25 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 960, 540 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxFogBackground1/Background_Far"]
+
+visibility/opacity = 0.45
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxFogBackground1"]
+
+motion/scale = Vector2( 0.45, 0.45 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 960, 540 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxFogBackground1/Background"]
+
+visibility/opacity = 0.25
+transform/scale = Vector2( -1, -1 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -960, -540 )
+
+[node name="ParallaxFogForeground" type="ParallaxBackground" parent="."]
+
+editor/display_folded = true
+layer = 2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = false
+
+[node name="Foreground" type="ParallaxLayer" parent="ParallaxFogForeground"]
+
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 960, 540 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxFogForeground/Foreground"]
+
+visibility/opacity = 0.15
+texture = ExtResource( 2 )
+centered = false
+
+[node name="display_witch" type="RigidBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 773.861, 133.604 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 3 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 4 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 5 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/3/trigger = false
+shapes/4/shape = SubResource( 6 )
+shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/4/trigger = false
+shapes/5/shape = SubResource( 7 )
+shapes/5/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/5/trigger = false
+shapes/6/shape = SubResource( 8 )
+shapes/6/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/6/trigger = false
+shapes/7/shape = SubResource( 9 )
+shapes/7/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/7/trigger = false
+shapes/8/shape = SubResource( 10 )
+shapes/8/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/8/trigger = false
+shapes/9/shape = SubResource( 11 )
+shapes/9/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/9/trigger = false
+shapes/10/shape = SubResource( 12 )
+shapes/10/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/10/trigger = false
+shapes/11/shape = SubResource( 13 )
+shapes/11/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/11/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 2
+mass = 1.0
+friction = 0.0
+bounce = 0.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 1
+contacts_reported = 4
+contact_monitor = true
+sleeping = false
+can_sleep = false
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = 0.5
+damp_override/angular = 1.0
+script/script = ExtResource( 3 )
+h_dir = 0.0
+v_dir = 0.0
+thrust = 600
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="display_witch"]
+
+build_mode = 0
+polygon = Vector2Array( -9.24938, -42.6377, 0.340286, -43.3859, 9.11381, -36.2446, 16.8671, -38.0809, 11.3582, -30.9397, 9.24983, -21.6901, 18.8395, -13.5967, 31.1496, -13.2566, 46.2482, -19.3097, 48.6967, -18.2215, 20.8118, -4.41511, 24.1724, 2.02954, 12.4919, 20.9172, 1.18411, 26.6332, -12.6089, 25.0179, -5.52599, 16.9409, -0.43129, 8.11834, -19.1947, 16.4438, -30.3782, 28.3729, -41.9345, 36.6984, -47.7748, 23.4025, -30.8753, 14.7042, -22.4255, 13.4616, -9.87514, 7.37277, -6.19229, 4.22587, -4.96586, -4.45353, -1.66391, -18.8877, -0.27182, -26.927, -5.37271, -29.4434, 2.31263, -34.0002 )
+shape_range = Vector2( 0, 11 )
+trigger = false
+
+[node name="Visuals" type="Node2D" parent="display_witch"]
+
+[node name="Particles2D" type="Particles2D" parent="display_witch/Visuals"]
+
+transform/pos = Vector2( -51.1044, 29.4683 )
+z/z = -1
+config/amount = 32
+config/lifetime = 0.5
+config/process_mode = 1
+config/half_extents = Vector2( 6, 4 )
+config/local_space = false
+params/direction = 123.77
+params/spread = 52.52
+params/linear_velocity = -10.0
+params/spin_velocity = 5.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 2.0
+params/initial_angle = 0.0
+params/initial_size = 10.0
+params/final_size = 0.1
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/initial_angle = 1.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="display_witch/Visuals"]
+
+frames = SubResource( 14 )
+animation = "fast"
+playing = true
+modulate = Color( 0, 0, 0, 1 )
+
+[node name="Camera2D" type="Camera2D" parent="display_witch"]
+
+transform/pos = Vector2( -493.347, 139.023 )
+offset = Vector2( 200, 0 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 600
+drag_margin/h_enabled = false
+drag_margin/v_enabled = false
+smoothing/enable = false
+smoothing/speed = 0.0
+drag_margin/left = 0.25
+drag_margin/top = 0.4
+drag_margin/right = 0.1
+drag_margin/bottom = 0.0
+
+[node name="BroomstickArea2D" type="Area2D" parent="display_witch"]
+
+editor/display_folded = true
+input/pickable = true
+shapes/0/shape = SubResource( 15 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 2
+collision/mask = 2
+script/script = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="display_witch/BroomstickArea2D"]
+
+build_mode = 0
+polygon = Vector2Array( -52.2942, 20.661, -43.0391, 41.7906, -13.353, 15.9462, -18.0678, 7.91346 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -3
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 960.0
+margin/bottom = 540.0
+use_top_left = false
+
+[node name="HUD" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 187.0
+margin/top = 187.0
+margin/right = 773.0
+margin/bottom = 353.0
+alignment = 0
+
+[node name="title" type="Label" parent="CanvasLayer/CenterContainer/HUD"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = SubResource( 17 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 586.0
+margin/bottom = 107.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.214844, 0.214844, 0.214844, 1 )
+text = "Spookyscape"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Container" type="Container" parent="CanvasLayer/CenterContainer/HUD"]
+
+rect/min_size = Vector2( 0, 30 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 111.0
+margin/right = 586.0
+margin/bottom = 141.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer/HUD"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 145.0
+margin/right = 586.0
+margin/bottom = 166.0
+alignment = 0
+
+[node name="Fly_Button" type="Button" parent="CanvasLayer/CenterContainer/HUD/HBoxContainer"]
+
+rect/min_size = Vector2( 80, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 11 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 80.0
+margin/bottom = 21.0
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Fly"
+flat = false
+script/script = ExtResource( 12 )
+
+[node name="Data_Button" type="Button" parent="CanvasLayer/CenterContainer/HUD/HBoxContainer"]
+
+visibility/visible = false
+rect/min_size = Vector2( 80, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 11 )
+margin/left = 84.0
+margin/top = 0.0
+margin/right = 194.0
+margin/bottom = 21.0
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Options"
+flat = false
+
+[node name="About_Button" type="Button" parent="CanvasLayer/CenterContainer/HUD/HBoxContainer"]
+
+rect/min_size = Vector2( 80, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 11 )
+margin/left = 84.0
+margin/top = 0.0
+margin/right = 166.0
+margin/bottom = 21.0
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "About"
+flat = false
+
+[node name="Quit_Button" type="Button" parent="CanvasLayer/CenterContainer/HUD/HBoxContainer"]
+
+rect/min_size = Vector2( 80, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 11 )
+margin/left = 170.0
+margin/top = 0.0
+margin/right = 250.0
+margin/bottom = 21.0
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Quit"
+flat = false
+
+[node name="Label" parent="CanvasLayer" instance=ExtResource( 13 )]
+
+visibility/visible = false
+
+[node name="About_Container" type="Container" parent="CanvasLayer"]
+
+visibility/opacity = 0.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 960.0
+margin/bottom = 540.0
+
+[node name="About_CenterContainer" type="CenterContainer" parent="CanvasLayer/About_Container"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 0
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 960.0
+margin/bottom = 540.0
+use_top_left = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/About_Container/About_CenterContainer"]
+
+rect/min_size = Vector2( 800, 400 )
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 80.0
+margin/top = 70.0
+margin/right = 880.0
+margin/bottom = 470.0
+bbcode/enabled = false
+bbcode/bbcode = "Spookyscape
+DESK INK
+
+Controls:
+Fly - D-Pad or Left Stick
+UI Focus - D-Pad
+UI Select - O
+
+Created for the OUYA Anniversary Game Jam 2024.
+Development began on September 20th, 2024 and version 1.0 was completed September 29th, 2024.
+
+Programming & Design by Bradley Herdman
+Art by Bradley Herdman 
+Music by Bradley & Elizabeth Herdman
+
+Copyright 2024 DESK INK, LLC
+Copyright 2024 Godot-for-OUYA
+
+
+TOOLS
+Audacity
+GIMP
+Godot-for-OUYA
+Inkscape
+Logic Pro
+Sketchbook
+
+
+FONTS
+Copyright 2001 The Silkscreen Project Authors (https://github.com/googlefonts/silkscreen)
+
+Copyright (c) 2011 Silicon Andhra (fonts.siliconandhra.org). Copyright (c) 2010 by Font Diner, Inc DBA Sideshow.
+
+Copyright (c) 2013, 2014, Hubert and Fischer, Philipp Hubert (philipp@hubertfischer.com),
+Sebastian Fischer (sebastian@hubertfischer.com)
+
+The Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+https://openfontlicense.org
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded, 
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+\"Font Software\" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+\"Reserved Font Name\" refers to any names specified as such after the
+copyright statement(s).
+
+\"Original Version\" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+\"Modified Version\" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+\"Author\" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+"
+visible_characters = -1
+percent_visible = 1.0
+
+[node name="Back_Button" type="Button" parent="CanvasLayer/About_Container"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+theme/theme = ExtResource( 11 )
+margin/left = 812.0
+margin/top = 480.0
+margin/right = 880.0
+margin/bottom = 501.0
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Back"
+flat = false
+script/script = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Fade_From_About = SubResource( 18 )
+anims/Fade_to_About = SubResource( 19 )
+anims/fade_out_and_to_black = SubResource( 20 )
+anims/move_witch = SubResource( 21 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="CanvasLayer 2" type="CanvasLayer" parent="."]
+
+layer = 50
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="Panel" type="Panel" parent="CanvasLayer 2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 960.0
+margin/bottom = 540.0
+custom_styles/panel = SubResource( 22 )
+
+[connection signal="body_enter" from="display_witch/BroomstickArea2D" to="display_witch/BroomstickArea2D" method="_on_BroomStickArea_body_enter"]
+
+[connection signal="button_down" from="CanvasLayer/CenterContainer/HUD/HBoxContainer/Fly_Button" to="." method="_on_Fly_Button_button_down"]
+
+[connection signal="button_down" from="CanvasLayer/CenterContainer/HUD/HBoxContainer/About_Button" to="." method="_on_About_Button_button_down"]
+
+[connection signal="button_down" from="CanvasLayer/CenterContainer/HUD/HBoxContainer/Quit_Button" to="." method="_on_Quit_Button_button_down"]
+
+[connection signal="button_down" from="CanvasLayer/About_Container/Back_Button" to="." method="_on_Back_Button_button_down"]
+
+[connection signal="finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
+
+

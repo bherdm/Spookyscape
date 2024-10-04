@@ -1,0 +1,163 @@
+[gd_scene load_steps=12 format=1]
+
+[ext_resource path="res://witch.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Witch/Witch_FastBackwards_100x100.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Witch/Witch_Fast1_100x100.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Witch/Witch_Fast2_100x100.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Witch/Witch_Slow_100x100.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Broomstick_Attack.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "backwards",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "fast",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "slow",
+"speed": 5.0
+} ]
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -19.4349, 0.0904007, -9.13046, 23.3707, -44.5288, 72.3664, -73.4552, -15.3819 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 14.0979, 19.2242, -3.8118, 16.3587, 0.998238, 5.20348, 24.5367, 2.13324 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -4.01648, -16.9022, 2.73804, -34.6072, 6.72934, -38.2915, 12.5628, -28.7738, 10.3113, -20.2795, 0.998238, 5.20348, -7.18906, 3.56602 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 10.3113, -20.2795, 29.9608, -12.6039, 24.5367, 2.13324, 0.998238, 5.20348 )
+
+[node name="witch" type="Node2D"]
+
+script/script = ExtResource( 1 )
+thrust = 600
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Particles2D" type="Particles2D" parent="Visuals"]
+
+transform/pos = Vector2( -51.1044, 29.4683 )
+z/z = -1
+config/amount = 32
+config/lifetime = 1.0
+config/process_mode = 1
+config/half_extents = Vector2( 6, 4 )
+config/local_space = false
+params/direction = 123.77
+params/spread = 52.52
+params/linear_velocity = -10.0
+params/spin_velocity = 5.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 2.0
+params/initial_angle = 0.0
+params/initial_size = 10.0
+params/final_size = 0.1
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/initial_angle = 1.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
+
+frames = SubResource( 1 )
+animation = "fast"
+frame = 1
+playing = true
+modulate = Color( 0, 0, 0, 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+transform/pos = Vector2( 90.5505, 0 )
+offset = Vector2( 200, 0 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -900
+limit/right = 10000000
+limit/bottom = 600
+drag_margin/h_enabled = true
+drag_margin/v_enabled = false
+smoothing/enable = false
+smoothing/speed = 100.0
+drag_margin/left = 0.25
+drag_margin/top = 0.4
+drag_margin/right = 0.0
+drag_margin/bottom = 0.0
+
+[node name="BroomstickArea2D" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 2
+collision/mask = 2
+script/script = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BroomstickArea2D"]
+
+build_mode = 0
+polygon = Vector2Array( -73.4552, -15.3819, -44.5288, 72.3664, -9.13046, 23.3707, -19.4349, 0.0904007 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="WitchArea2D" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 4 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 5 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 8
+collision/mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WitchArea2D"]
+
+build_mode = 0
+polygon = Vector2Array( 2.73804, -34.6072, -4.01648, -16.9022, -7.18906, 3.56602, 0.998238, 5.20348, -3.8118, 16.3587, 14.0979, 19.2242, 24.5367, 2.13324, 29.9608, -12.6039, 10.3113, -20.2795, 12.5628, -28.7738, 6.72934, -38.2915 )
+shape_range = Vector2( 0, 2 )
+trigger = false
+
+[connection signal="area_enter" from="BroomstickArea2D" to="BroomstickArea2D" method="_on_BroomstickArea2D_area_enter"]
+
+[connection signal="area_enter" from="WitchArea2D" to="." method="_on_WitchArea2D_area_enter"]
+
+

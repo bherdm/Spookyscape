@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=1]
+
+[sub_resource type="CanvasItemMaterial" id=3]
+
+shader/shading_mode = 0
+
+[sub_resource type="ImageTexture" id=4]
+
+flags = 7
+image = Image()
+size = Vector2( 8, 8 )
+storage = 0
+lossy_quality = 0.7
+
+[node name="Background_Back" type="ParallaxLayer"]
+
+editor/display_folded = true
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 2048, 2048 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+material/material = SubResource( 3 )
+transform/scale = Vector2( 2, 2 )
+texture = SubResource( 4 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 2048, 2048 )
+
+

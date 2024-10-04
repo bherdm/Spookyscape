@@ -1,0 +1,163 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://Stages/DESK_INK_Splash.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Google Fonts/Silkscreen.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://Assets/Witch/Witch_Fast2_100x100.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0, 0, 0, 1 )
+light_color = Color( 0.8, 0.8, 0.8, 1 )
+dark_color = Color( 0.8, 0.8, 0.8, 1 )
+border_size = 0
+border_blend = true
+draw_bg = true
+
+[sub_resource type="Animation" id=3]
+
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "fade_to_black"
+length = 0.8
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.8 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "fade_to_black_fast"
+length = 0.45
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0.45 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "logo_anim"
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.2, 1.2, 1.5 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.0, 0.0 ]
+}
+
+[node name="DESK_INK_Splash" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 1 )
+path_to_next_stage = "Stages/title"
+path_to_skip_stage = "Stages/title"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 960.0
+margin/bottom = 540.0
+use_top_left = false
+
+[node name="Label" type="Label" parent="CenterContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 394.0
+margin/top = 252.0
+margin/right = 566.0
+margin/bottom = 288.0
+custom_fonts/font = ExtResource( 2 )
+text = "DESK INK"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 163.331, 297.029 )
+texture = ExtResource( 3 )
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Panel" type="Panel" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 960.0
+margin/bottom = 540.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/fade_from_black = SubResource( 3 )
+anims/fade_to_black = SubResource( 4 )
+anims/fade_to_black_fast = SubResource( 5 )
+anims/logo_anim = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
+
+
